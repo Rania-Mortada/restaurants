@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
             decoration: const BoxDecoration(
               // color: Color(0xFFA08E51),
               image: DecorationImage(
-                image: AssetImage("asses/image/White and Orange Healthy Food Instagram Post (14).png"),
+                image: AssetImage("asses/image/backgrod.png"),
                 fit: BoxFit.cover,
               ),
             ),
