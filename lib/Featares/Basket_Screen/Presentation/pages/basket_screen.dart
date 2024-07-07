@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:restaurants/Featares/Menu/Presentation/pages/menu_screen.dart';
 
+import '../../../../generated/l10n.dart';
+class MyBasketScreen extends StatefulWidget {
+  @override
+  State<MyBasketScreen> createState() => _MyBasketScreenState();
+}
 
-
-class MyBasketScreen extends StatelessWidget {
+class _MyBasketScreenState extends State<MyBasketScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Basket'),
+        title: Text(S.of(context).apbar,),
         leading: IconButton(
           icon: Icon(Icons.arrow_back,color: Colors.orange,),
           onPressed: () {
@@ -29,8 +33,8 @@ class MyBasketScreen extends StatelessWidget {
                 child: ListTile(
                   leading: Image.asset('asses/image/immm.jpg',
                       errorBuilder: (context, error, stackTrace) => Icon(Icons.error)),
-                  title: Text('Your order from'),
-                  subtitle: Text('Alaska'),
+                  title: Text(S.of(context).order,),
+                  subtitle: Text(S.of(context).alaska,),
                   trailing: IconButton(
                     icon: Icon(Icons.add),
                     onPressed: () {
@@ -43,18 +47,18 @@ class MyBasketScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16),
-              Text('Order details', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+              Text(S.of(context).details, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.restaurant_menu),
-                  title: Text('Alfredo Chicken Pasta'),
-                  subtitle: Text('Regular\nComments: oıl'),
-                  trailing: Text('180.00 EGP'),
+                  title: Text(S.of(context).alfredo,),
+                  subtitle: Text(S.of(context).regular,),
+                  trailing: Text(S.of(context).EGP,),
                   isThreeLine: true,
                 ),
               ),
               SizedBox(height: 16),
-              Text('Payment details', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+              Text(S.of(context).Payment, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
               Card(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -88,7 +92,7 @@ class MyBasketScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Text(
-                    "Checkout Now",
+    S.of(context).Checkout,
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.white,

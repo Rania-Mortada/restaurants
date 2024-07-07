@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:restaurants/Featares/Home_screen/Presentation/pages/home_screen.dart';
 import 'package:restaurants/Featares/Register_screen/Presentation/pages/register.dart';
 
+import '../../../../generated/l10n.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -37,10 +39,10 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 160),
-                  child: Text("Login",style:
+                  child: Text(S.of(context).login,style:
                   TextStyle(fontSize: 75,fontWeight: FontWeight.bold),),
                 ),
-                Text("Sign in to continue",style: TextStyle(fontSize:25 ),),
+                Text(S.of(context).Signinto,style: TextStyle(fontSize:25 ),),
                 SizedBox(height: 20,),
                 Column(
                   children: [
@@ -66,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          hintText: "Email",
+                          hintText: S.of(context).email,
                           hintStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -74,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return "Enter Correct email";
+                            return S.of(context).enter;
                           } else {
                             return null;
                           }
@@ -109,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          hintText: "Password",
+                          hintText: S.of(context).password,
                           hintStyle: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold, fontSize: 17),
@@ -129,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return "Enter Correct password";
+                            return S.of(context).Enterp;
                           } else {
                             return null;
                           }
@@ -161,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text("LOGIN",
+                      child: Text(S.of(context).LOGIN,
 
                         style: TextStyle(
                           fontSize: 18,color: Colors.white,
@@ -174,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "don’t have an account? "
+                            S.of(context).account
 
 
                         ),
@@ -187,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               );
                             },
-                            child: Text( "create a new account",style:
+                            child: Text( S.of(context).create,style:
                             TextStyle(fontWeight: FontWeight.bold, color: Colors.orange),)),
                       ],
                     )

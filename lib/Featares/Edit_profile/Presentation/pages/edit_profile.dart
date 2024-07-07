@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
+
 class EditProfileScreen extends StatefulWidget {
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
@@ -15,18 +17,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: Text(S.of(context).Edit,style: TextStyle
+          (fontSize: 35,color: Colors.orange,fontWeight: FontWeight.bold),),
+
         actions: [
           TextButton(
             onPressed: () {
               // Save action
             },
-            child: Text('Save', style: TextStyle(color: Colors.red)),
+            child: Text(S.of(context).sava, style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 16,right: 16,top: 80),
         child: Column(
           children: [
             GestureDetector(
@@ -42,7 +46,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             TextField(
               controller: nameController,
               decoration: InputDecoration(
-                labelText: 'Name',
+                labelText: S.of(context).name,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -50,7 +54,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             TextField(
               controller: bioController,
               decoration: InputDecoration(
-                labelText: 'Bio',
+                labelText:S.of(context).Bio,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -72,7 +76,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               },
               decoration: InputDecoration(
                 labelText: selectedDate == null
-                    ? 'Date of birth'
+                    ? S.of(context).Dateofbirth
                     : '${selectedDate!.toLocal()}'.split(' ')[0],
                 border: OutlineInputBorder(),
                 suffixIcon: Icon(Icons.calendar_today),
@@ -85,13 +89,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        gender = 'Female';
+                        gender = S.of(context).female;
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: gender == 'Female' ? Colors.pink : Colors.grey,
+                      backgroundColor: gender == S.of(context).female ? Colors.orange : Colors.grey,
                     ),
-                    child: Text('Female'),
+                    child: Text(S.of(context).female),
                   ),
                 ),
                 SizedBox(width: 16),
@@ -99,13 +103,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        gender = 'Male';
+                        gender = S.of(context).male;
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: gender == 'Male' ? Colors.blue : Colors.grey,
+                      backgroundColor: gender == S.of(context).male ? Colors.orange : Colors.grey,
                     ),
-                    child: Text('Male'),
+                    child: Text(S.of(context).male),
                   ),
                 ),
               ],

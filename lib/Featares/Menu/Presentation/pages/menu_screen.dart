@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:restaurants/Featares/Basket_Screen/Presentation/pages/basket_screen.dart';
 import 'package:restaurants/Featares/Home_screen/Presentation/pages/home_screen.dart';
 
+import '../../../../generated/l10n.dart';
+
 
 
 class MenuScreen extends StatefulWidget {
@@ -38,7 +40,7 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menu'),
+        title: Text( S.of(context).menu),
         leading: IconButton(
           icon: Icon(Icons.arrow_back,color: Colors.orange,),
           onPressed: () {
@@ -67,7 +69,7 @@ class _MenuScreenState extends State<MenuScreen> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
-                  'Alfredo Chicken Pasta',
+                  S.of(context).Pasta,
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
@@ -78,7 +80,7 @@ class _MenuScreenState extends State<MenuScreen> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
-                  'Penne pasta, chicken, with sauce and cheese',
+                  S.of(context).cheese,
                   style: TextStyle(
                     fontSize: 16.0,
                     color: Colors.grey[700],
@@ -89,7 +91,7 @@ class _MenuScreenState extends State<MenuScreen> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
-                  'Select size',
+                  S.of(context).size,
                   style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
@@ -108,7 +110,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   ),
                   child: DropdownButton<String>(
                     hint: Text(
-                      'Select size',
+                      S.of(context).size,
                       style: TextStyle(fontSize: 18.0),
                     ),
                     value: _selectedSize,
@@ -137,7 +139,7 @@ class _MenuScreenState extends State<MenuScreen> {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Text(
-                  'Special instructions',
+                  S.of(context).Special,
                   style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
@@ -150,7 +152,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 child: TextFormField(
                   controller: specila,
                   decoration: InputDecoration(
-                    hintText: 'e.g., Please don’t add onion',
+                    hintText:  S.of(context).onion,
                     border: OutlineInputBorder(),
                   ),
                   validator: (String? value) {
@@ -207,7 +209,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Text(
-                        "Add to basket",
+                        S.of(context).basket,
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

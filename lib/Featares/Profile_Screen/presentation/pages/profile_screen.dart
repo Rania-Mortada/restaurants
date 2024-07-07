@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurants/Featares/Home_screen/Presentation/pages/home_screen.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../Edit_profile/Presentation/pages/edit_profile.dart';
 import '../../../Seting_Screen/Presentation/pages/seting_screen.dart';
 
@@ -28,113 +29,126 @@ class _UserProfileState extends State<ProfileScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(' Profile'),
+          title: Text( S.of(context).profile,style: TextStyle(
+              fontSize: 35,fontWeight: FontWeight.bold,color: Colors.orange),),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
+        body: Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height / 1,
+          decoration: const BoxDecoration(
+            // color: Color(0xFFA08E51),
+            image: DecorationImage(
+              image: AssetImage("asses/image/backgrod.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage('asses/image/immm.jpg'), // Replace with your image
+                      ),
+                      SizedBox(width: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            S.of(context).nam,
+                            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            S.of(context).egp,
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                ),
+                Divider(),
+                SizedBox(height: 30,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/profile_placeholder.png'), // Replace with your image
+                    MaterialButton(
+
+                      color: Colors.orange,
+                      onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => EditProfileScreen()));
+                        // if (formKey.currentState!.validate()) {
+                        //   // LoginCubit.get(context).Login(
+                        //   //   email: emailController.text,
+                        //   //   password: passwordController.text,
+                        //   // );
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(builder: (context) => HomeScreen()));
+                        // }
+
+                      },
+
+                      elevation: 5,
+
+                      minWidth: MediaQuery.of(context).size.width / 2,
+                      height: 40,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text( S.of(context).Edit,
+
+                        style: TextStyle(
+                          fontSize: 18,color: Colors.white,
+                        ),
+                      ),
                     ),
-                    SizedBox(width: 16),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'رانيا مرتضى',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          '0.00 EGP',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ],
+                    SizedBox(width: 20,),
+                    MaterialButton(
+
+                      color: Colors.orange,
+                      onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SettingsPage()));
+
+
+                        // if (formKey.currentState!.validate()) {
+                        //   // LoginCubit.get(context).Login(
+                        //   //   email: emailController.text,
+                        //   //   password: passwordController.text,
+                        //   // );
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(builder: (context) => HomeScreen()));
+                        // }
+
+                      },
+
+                      elevation: 5,
+
+                      minWidth: MediaQuery.of(context).size.width / 3,
+                      height: 40,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(Icons.settings,color: Colors.white,),
                     ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              ),
-              Divider(),
-              SizedBox(height: 30,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MaterialButton(
-                  
-                    color: Colors.orange,
-                    onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => EditProfileScreen()));
-                      // if (formKey.currentState!.validate()) {
-                      //   // LoginCubit.get(context).Login(
-                      //   //   email: emailController.text,
-                      //   //   password: passwordController.text,
-                      //   // );
-                      //   Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(builder: (context) => HomeScreen()));
-                      // }
-                  
-                    },
-                  
-                    elevation: 5,
-                  
-                    minWidth: MediaQuery.of(context).size.width / 2,
-                    height: 40,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text("Edit Profile",
-                  
-                      style: TextStyle(
-                        fontSize: 18,color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 20,),
-                  MaterialButton(
 
-                    color: Colors.orange,
-                    onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => SetingScreen()));
-
-
-                      // if (formKey.currentState!.validate()) {
-                      //   // LoginCubit.get(context).Login(
-                      //   //   email: emailController.text,
-                      //   //   password: passwordController.text,
-                      //   // );
-                      //   Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(builder: (context) => HomeScreen()));
-                      // }
-
-                    },
-
-                    elevation: 5,
-
-                    minWidth: MediaQuery.of(context).size.width / 3,
-                    height: 40,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(Icons.settings,color: Colors.white,),
-                  ),
-                ],
-              ),
-
-            ],
+              ],
+            ),
           ),
         ),
           bottomNavigationBar: BottomNavigationBar(
@@ -163,15 +177,15 @@ class _UserProfileState extends State<ProfileScreen> {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.delivery_dining),
-                label: 'Delivery',
+                label:  S.of(context).delivery,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.assignment),
-                label: 'My Orders',
+                label:  S.of(context).myOrders,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                label: 'My',
+                label:  S.of(context).my,
               ),
             ],
           )

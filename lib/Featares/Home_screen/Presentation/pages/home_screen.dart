@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restaurants/Featares/Menu/Presentation/pages/menu_screen.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../Profile_Screen/presentation/pages/profile_screen.dart';
-
-
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,10 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Restaurants',
+          S.of(context).restaurants,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
         ),
-
       ),
       body: Stack(
         children: [
@@ -58,15 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.delivery_dining),
-            label: 'Delivery',
+            label: S.of(context).delivery,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment),
-            label: 'My Orders',
+            label: S.of(context).myOrders,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'My',
+            label: S.of(context).my,
           ),
         ],
       ),
@@ -89,36 +87,35 @@ class _RestaurantListState extends State<RestaurantList> {
   ];
   int? _value = 1;
 
-  final List<Map<String, String>> restaurants = [
-    {
-      'name': 'Dishes',
-      'description': 'Mercury is the smallest planet in the Solar System and the closest to the Sun.',
-      'image': 'assets/mercury.jpg',
-    },
-    {
-      'name': 'Offers',
-      'description': 'Venus is the second planet from the Sun and is Earth\'s closest planetary neighbor.',
-      'image': 'assets/venus.jpg',
-    },
-    {
-      'name': 'Restaur',
-      'description': 'Earth is an ellipsoid with a circumference of about 40,000 km. It is the densest planet in the Solar System.',
-      'image': 'assets/earth.jpg',
-    },
-    {
-      'name': 'Restaurss',
-      'description': 'Earth is an ellipsoid with a circumference of about 40,000 km. It is the densest planet in the Solar System.',
-      'image': 'assets/earth.jpg',
-    },
-    {
-      'name': 'Restaurrr',
-      'description': 'Earth is an ellipsoid with a circumference of about 40,000 km. It is the densest planet in the Solar System.',
-      'image': 'assets/earth.jpg',
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, String>> restaurants = [
+      {
+        'name': '${S.of(context).dishes}',
+        'description': 'Mercury is the smallest planet in the Solar System and the closest to the Sun.',
+        'image': 'assets/mercury.jpg',
+      },
+      {
+        'name': '${S.of(context).offers}',
+        'description': 'Venus is the second planet from the Sun and is Earth\'s closest planetary neighbor.',
+        'image': 'assets/venus.jpg',
+      },
+      {
+        'name': '${S.of(context).restaurants}',
+        'description': 'Earth is an ellipsoid with a circumference of about 40,000 km. It is the densest planet in the Solar System.',
+        'image': 'assets/earth.jpg',
+      },
+      {
+        'name': '${S.of(context).restaurants}',
+        'description': 'Earth is an ellipsoid with a circumference of about 40,000 km. It is the densest planet in the Solar System.',
+        'image': 'assets/earth.jpg',
+      },
+      {
+        'name': '${S.of(context).restaurants}',
+        'description': 'Earth is an ellipsoid with a circumference of about 40,000 km. It is the densest planet in the Solar System.',
+        'image': 'assets/earth.jpg',
+      },
+    ];
     return Column(
       children: [
         Container(
@@ -165,14 +162,14 @@ class _RestaurantListState extends State<RestaurantList> {
                       fit: BoxFit.cover,
                     ),
                     title: Text(
-                      restaurant['name']!,
+                      restaurant['name'] ?? 'Unknown', // Ensure non-null
                       style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Colors.orange),
                     ),
                     subtitle: Text(
-                      restaurant['description']!,
+                      restaurant['description'] ?? 'No description', // Ensure non-null
                       style: TextStyle(
                           fontSize: 16, color: Colors.white),
                     ),
@@ -201,5 +198,3 @@ class _RestaurantListState extends State<RestaurantList> {
     );
   }
 }
-
-

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restaurants/Featares/login_screen/Presentation/pages/Login_screen.dart';
 
+import '../../../../generated/l10n.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -44,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 120,right: 50),
-                  child: Text("create your account",style:
+                  child: Text(S.of(context).create,style:
                   TextStyle(fontSize: 36,fontWeight: FontWeight.bold),),
                 ),
                 SizedBox(height: 20,),
