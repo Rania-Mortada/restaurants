@@ -78,14 +78,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: "First name",
+                              hintText: S.of(context).First,
                               hintStyle: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),
                             validator: (String? value) {
                               if (value!.isEmpty) {
-                                return "Enter Correct First name";
+                                return S.of(context).EnterCorrect;
                               } else {
                                 return null;
                               }
@@ -119,14 +119,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: "Last name",
+                              hintText: S.of(context).Last,
                               hintStyle: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),
                             validator: (String? value) {
                               if (value!.isEmpty) {
-                                return "Enter Correct Last name";
+                                return S.of(context).EnterLastname;
                               } else {
                                 return null;
                               }
@@ -163,14 +163,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          hintText: "Phone number",
+                          hintText: S.of(context).Phone,
                           hintStyle: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return "Enter Correct Phone number";
+                            return S.of(context).EnterPhonenumber;
                           } else {
                             return null;
                           }
@@ -205,14 +205,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          hintText: "Address",
+                          hintText: S.of(context).Address,
                           hintStyle: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return "Enter Correct Address";
+                            return S.of(context).EnterAddress;
                           } else {
                             return null;
                           }
@@ -247,7 +247,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          hintText: "Email",
+                          hintText: S.of(context).email,
                           hintStyle: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold, fontSize: 15
@@ -255,7 +255,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return "Enter Correct email";
+                            return S.of(context).enter;
                           } else {
                             return null;
                           }
@@ -290,7 +290,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          hintText: "Password",
+                          hintText: S.of(context).password,
                           hintStyle: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold, fontSize: 15),
@@ -310,7 +310,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return "Enter Correct password";
+                            return S.of(context).Enterp;
                           } else {
                             return null;
                           }
@@ -338,7 +338,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text("sign up",
+                      child: Text(S.of(context).signup,
 
                         style: TextStyle(
                           fontSize: 25,color: Colors.white,
@@ -351,7 +351,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                            "Already have account"
+                            S.of(context).Alreadyhaveaccount
 
 
                         ),
@@ -373,7 +373,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   ),
                                 );
                               },
-                              child: Text( "Sign in",style:
+                              child: Text(S.of(context).Signin,style:
                               TextStyle(fontWeight: FontWeight.bold, color: Colors.orange),)),
                         ),
                             // child: Text( "Sign in",style:
@@ -382,7 +382,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ],
                     ),
                     Text(
-                        "Forget Password? "
+                        S.of(context).ForgetPassword
 
 
                     ),

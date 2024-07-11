@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants/Featares/Home_screen/Presentation/pages/home_screen.dart';
-
 import '../../../../generated/l10n.dart';
 import '../cubit/loce_cubit.dart';
-import '../cubit/loce_state.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -16,102 +14,120 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      appBar: AppBar(
-        title: Text(S.of(context).Settings,style: TextStyle
-          (fontSize:35,fontWeight: FontWeight.bold,color: Colors.orange ),),
-      ),
-      body:
-      Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height / 1,
-        decoration: const BoxDecoration(
-          // color: Color(0xFFA08E51),
-          image: DecorationImage(
-            image: AssetImage("asses/image/backgrod.png"),
-            fit: BoxFit.cover,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            S.of(context).Settings,
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.orange),
           ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 35,top: 35),
-
-          child: BlocConsumer<LocaleCubit, ChangeLocaleState>(
-            listener: (BuildContext context, ChangeLocaleState state) {  },
-            builder: (BuildContext context, ChangeLocaleState state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.asset(
+                'asses/image/backgrod.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text(
-                      S.of(context).MyAccount,
-                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                  Text(
+                    S.of(context).MyAccount,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  SizedBox(height: 10),
+                  Card(
+                    color: Colors.white.withOpacity(0.9),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                    child: Column(
+                      children: [
+                        _buildListTile(
+                          context,
+                          icon: Icons.list,
+                          title: S.of(context).myOrders,
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                          },
+                        ),
+                        Divider(),
+                        _buildListTile(
+                          context,
+                          icon: Icons.lock,
+                          title: S.of(context).ChangePassword,
+                          onTap: () {
+                            // Handle navigation to Change Password
+                          },
+                        ),
+                        Divider(),
+                        _buildListTile(
+                          context,
+                          icon: Icons.email,
+                          title: S.of(context).ChangeEmail,
+                          onTap: () {
+                            // Handle navigation to Change Email
+                          },
+                        ),
+                        Divider(),
+                        _buildListTile(
+                          context,
+                          icon: Icons.location_on,
+                          title: S.of(context).MyAddressBook,
+                          onTap: () {
+                            // Handle navigation to My Address Book
+                          },
+                        ),
+                        Divider(),
+                        _buildListTile(
+                          context,
+                          icon: Icons.credit_card,
+                          title: S.of(context).ManageCards,
+                          onTap: () {
+                            // Handle navigation to Manage Cards
+                          },
+                        ),
+                      ],
                     ),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.list,size: 25,),
-                    title: Text(S.of(context).myOrders,style: TextStyle(fontSize: 25),),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                      );
-                    },
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.lock,size: 25,),
-                    title: Text(S.of(context).ChangePassword,style: TextStyle(fontSize: 25),),
-                    onTap: () {
-                      // Handle navigation to Change Password
-                    },
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.email,size: 25,),
-                    title: Text(S.of(context).ChangeEmail,style: TextStyle(fontSize: 25),),
-                    onTap: () {
-                      // Handle navigation to Change Email
-                    },
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.location_on,size: 25,),
-                    title: Text(S.of(context).MyAddressBook,style: TextStyle(fontSize: 25),),
-                    onTap: () {
-                      // Handle navigation to My Address Book
-                    },
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.credit_card,size: 25,),
-                    title: Text(S.of(context).ManageCards,style: TextStyle(fontSize: 25),),
-                    onTap: () {
-                      // Handle navigation to Manage Cards
-                    },
                   ),
                   SizedBox(height: 20),
                   Text(
                     S.of(context).Help,
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.language,size: 25,),
-                    title: Text(S.of(context).Language,style: TextStyle(fontSize: 25),),
-                    onTap: () {
-                      _showLanguageDialog();
-                    },
+                  SizedBox(height: 10),
+                  Card(
+                    color: Colors.white.withOpacity(0.9),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                    child: _buildListTile(
+                      context,
+                      icon: Icons.language,
+                      title: S.of(context).Language,
+                      onTap: _showLanguageDialog,
+                    ),
                   ),
                 ],
-              );
-
-            },
-
-          ),
+              ),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  ListTile _buildListTile(BuildContext context, {required IconData icon, required String title, required VoidCallback onTap}) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.orange, size: 30),
+      title: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+      onTap: onTap,
     );
   }
 
@@ -150,18 +166,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ],
           ),
-          // actions: [
-          //   TextButton(
-          //     onPressed: () {
-          //
-          //       Navigator.of(context).pop();
-          //     },
-          //     child: Text(S.of(context).SaveChange),
-          //   ),
-          // ],
         );
       },
     );
   }
 }
-

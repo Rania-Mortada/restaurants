@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'dart:async';
 
 import '../../login_screen/Presentation/pages/Login_screen.dart';

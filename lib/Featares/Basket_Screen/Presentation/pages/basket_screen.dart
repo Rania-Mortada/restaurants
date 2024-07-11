@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurants/Featares/Menu/Presentation/pages/menu_screen.dart';
-
 import '../../../../generated/l10n.dart';
+
 class MyBasketScreen extends StatefulWidget {
   @override
   State<MyBasketScreen> createState() => _MyBasketScreenState();
@@ -12,117 +11,138 @@ class _MyBasketScreenState extends State<MyBasketScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).apbar,),
+        title: Text(S.of(context).apbar),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,color: Colors.orange,),
+          icon: Icon(Icons.arrow_back, color: Colors.orange),
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MenuScreen()));
+            Navigator.pop(context);
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Card(
-                child: ListTile(
-                  leading: Image.asset('asses/image/immm.jpg',
-                      errorBuilder: (context, error, stackTrace) => Icon(Icons.error)),
-                  title: Text(S.of(context).order,),
-                  subtitle: Text(S.of(context).alaska,),
-                  trailing: IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MenuScreen()));
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(S.of(context).details, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.restaurant_menu),
-                  title: Text(S.of(context).alfredo,),
-                  subtitle: Text(S.of(context).regular,),
-                  trailing: Text(S.of(context).EGP,),
-                  isThreeLine: true,
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(S.of(context).Payment, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      PaymentDetailRow(label: 'Subtotal', amount: '180.00 EGP'),
-                      PaymentDetailRow(label: 'Tax', amount: '25.20 EGP'),
-                      PaymentDetailRow(label: 'Delivery fees', amount: '35.00 EGP'),
-                      Divider(),
-                      PaymentDetailRow(label: 'Total', amount: '240.20 EGP', isTotal: true),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 300,),
-              Center(
-                child: MaterialButton(
-                  color: Colors.orange,
-                  onPressed: () {
-                    // if (formKey.currentState!.validate()) {
-                    //   Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(builder: (context) => MyBasketScreen()));
-                    // }
-                  },
-                  elevation: 5,
-                  minWidth: MediaQuery.of(context).size.width / 1.2,
-                  height: 65,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Text(
-    S.of(context).Checkout,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
+      body: Stack(
+        children: [
+          // Background Image
+          Positioned.fill(
+            child: Image.asset(
+              'asses/image/backgrod.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          // Content
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          'assets/image/immm.jpg',
+                          fit: BoxFit.cover,
+                          width: 70,
+                          height: 70,
+                          errorBuilder: (context, error, stackTrace) =>
+                              Icon(Icons.error),
+                        ),
+                      ),
+                      title: Text(S.of(context).order,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      subtitle: Text(S.of(context).alaska),
+                      trailing: IconButton(
+                        icon: Icon(Icons.add, color: Colors.orange),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                     ),
                   ),
-                ),
+                  SizedBox(height: 20),
+                  Text(S.of(context).details,
+                      style:
+                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                  SizedBox(height: 10),
+                  Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      leading: Icon(Icons.restaurant_menu,
+                          size: 40, color: Colors.orange),
+                      title: Text(S.of(context).alfredo,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      subtitle: Text(S.of(context).regular),
+                      trailing: Text(S.of(context).EGP,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      isThreeLine: true,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(S.of(context).Payment,
+                      style:
+                      TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                  SizedBox(height: 10),
+                  Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          PaymentDetailRow(
+                              label: S.of(context).subtotal, amount: '180.00 EGP'),
+                          PaymentDetailRow(label: S.of(context).tax, amount: '25.20 EGP'),
+                          PaymentDetailRow(
+                              label: S.of(context).deliveryFees, amount: '35.00 EGP'),
+                          Divider(thickness: 1.5),
+                          PaymentDetailRow(
+                              label: S.of(context).total,
+                              amount: '240.20 EGP',
+                              isTotal: true),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // if (formKey.currentState!.validate()) {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(builder: (context) => MyBasketScreen()));
+                        // }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 100, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        elevation: 5,
+                      ),
+                      child: Text(
+                        S.of(context).Checkout,
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
-
-      // bottomNavigationBar: BottomAppBar(
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(16.0),
-      //     child: ElevatedButton(
-      //       onPressed: () {
-      //     },
-      //       child: Text('Checkout',style: TextStyle
-      //         (fontSize: 20,color: Colors.white),
-      //
-      //       ),
-      //       style: ElevatedButton.styleFrom(
-      //         backgroundColor: Colors.orange,
-      //
-      //       ),
-      //
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

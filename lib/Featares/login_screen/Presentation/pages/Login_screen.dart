@@ -13,113 +13,100 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
-  final textController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   bool _passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-     // backgroundColor:const Color(0xFFE6E8ED),
+    return Scaffold(
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
           child: Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height / 1,
+            height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
-              // color: Color(0xFFA08E51),
               image: DecorationImage(
                 image: AssetImage("asses/image/backgrod.png"),
                 fit: BoxFit.cover,
               ),
             ),
             child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 160),
-                  child: Text(S.of(context).login,style:
-                  TextStyle(fontSize: 75,fontWeight: FontWeight.bold),),
+                  child: Text(
+                    S.of(context).login,
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
                 ),
-                Text(S.of(context).Signinto,style: TextStyle(fontSize:25 ),),
-                SizedBox(height: 20,),
+                SizedBox(height: 10),
+                Text(
+                  S.of(context).Signinto,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+                SizedBox(height: 40),
                 Column(
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      height: 40,
-
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: TextFormField(
                         controller: emailController,
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
-                         // contentPadding: const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
                           enabledBorder: OutlineInputBorder(
-                            // borderSide: BorderSide(
-                            //   width: 2,
-                            // ),
+                            borderSide: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.orange,
-                              //width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.orange),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           hintText: S.of(context).email,
                           hintStyle: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 18,
+                            color: Colors.black,
                           ),
                         ),
                         validator: (String? value) {
                           if (value!.isEmpty) {
                             return S.of(context).enter;
-                          } else {
-                            return null;
                           }
+                          return null;
                         },
                       ),
-
                     ),
-
-
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 40,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      height: 40,
-
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: TextFormField(
                         controller: passwordController,
+                        obscureText: _passwordVisible,
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
-                          //contentPadding: const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
                           enabledBorder: OutlineInputBorder(
-                            // borderSide: BorderSide(
-                            //   width: 2,
-                            // ),
-                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.orange,
-                              //width: 2.0,
-                            ),
+                            borderSide: BorderSide(color: Colors.orange),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           hintText: S.of(context).password,
-                          hintStyle: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold, fontSize: 17),
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _passwordVisible
-                                  ? Icons.remove_red_eye_outlined
-                                  : Icons.remove_red_eye,
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                               color: Colors.orange,
                             ),
                             onPressed: () {
@@ -132,80 +119,66 @@ class _LoginScreenState extends State<LoginScreen> {
                         validator: (String? value) {
                           if (value!.isEmpty) {
                             return S.of(context).Enterp;
-                          } else {
-                            return null;
                           }
+                          return null;
                         },
                       ),
-
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 40),
                     MaterialButton(
-
                       color: Colors.orange,
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          // LoginCubit.get(context).Login(
-                          //   email: emailController.text,
-                          //   password: passwordController.text,
-                          // );
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => HomeScreen()));
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
                         }
-
                       },
-
                       elevation: 5,
-
-                      minWidth: MediaQuery.of(context).size.width / 1.7,
-                      height: 40,
+                      minWidth: MediaQuery.of(context).size.width * 0.6,
+                      height: 50,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(S.of(context).LOGIN,
-
-                        style: TextStyle(
-                          fontSize: 18,color: Colors.white,
-                        ),
+                      child: Text(
+                        S.of(context).LOGIN,
+                        style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 20,),
-
+                    SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                            S.of(context).account
-
-
+                          S.of(context).account,
+                          style: TextStyle(color: Colors.black),
                         ),
                         GestureDetector(
-                            onTap: (){
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => RegisterScreen(),
-                                ),
-                              );
-                            },
-                            child: Text( S.of(context).create,style:
-                            TextStyle(fontWeight: FontWeight.bold, color: Colors.orange),)),
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegisterScreen(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            S.of(context).create,
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orange),
+                          ),
+                        ),
                       ],
-                    )
-
-
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
         ),
       ),
-
     );
-
   }
 }
-
-
